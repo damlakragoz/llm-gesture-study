@@ -37,24 +37,44 @@
       </div>
     </section>
 
+    <!-- Welcome Screen -->
+    <section id="welcome-screen" class="screen">
+      <header class="study-header">
+        <h1>WELCOME</h1>
+      </header>
+      <div class="content-card">
+        <div class="welcome-content">
+          <p class="instruction-text">Welcome to the Personality Perception Study!</p>
+          <p>This research is conducted under the supervision of Prof. Dr. Uğur Güdükbay at Bilkent University.</p>
+          <p>In this experiment, you will view pairs of short video clips showing different movement profiles.</p>
+          <p>For each pair, you will be asked to judge which person appears to have MORE of a particular personality trait.</p>
+          <button type="button" id="welcome-continue" class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </section>
+
     <!-- Instructions Screen -->
     <section id="instructions-screen" class="screen">
       <header class="study-header">
-        <h1>Study Instructions</h1>
+        <h1>INSTRUCTIONS</h1>
       </header>
       <div class="content-card">
         <div class="instructions-content">
-          <p>In this study, you will view pairs of short animated clips showing different people's gestures and body language.</p>
-          <p>For each pair, you will be asked a question. Please select the person (left or right) who best matches the description.</p>
-          <p>After each choice, you will be asked how confident you are in your answer (1 = not at all confident, 5 = very confident).</p>
-          <p><strong>There are no right or wrong answers</strong> — we are interested in your natural impressions.</p>
+          <p>First, you will see a fixation cross (+) in the center of the screen. Please focus your eyes on this cross.</p>
+          <p>You will then see TWO short, silent animations presented side-by-side, along with a personality-related question.</p>
           <ul>
-            <li>Watch each clip carefully before making your choice.</li>
-            <li>You may take as long as you need.</li>
-            <li>Please complete all trials without skipping.</li>
+            <li>Observe both figures as they play for approximately 6 seconds.</li>
+            <li>Read the question at the top of the screen (e.g., "Which person appears more outgoing?").</li>
           </ul>
-          <p class="estimate">Estimated time: approximately 10–15 minutes.</p>
-          <button type="button" id="instructions-start" class="btn btn-primary">Begin Study</button>
+          <p>While or after the videos play, make your selection based on your first impression:</p>
+          <ul>
+            <li>Press <kbd>1</kbd> to select the LEFT video.</li>
+            <li>Press <kbd>2</kbd> to select the RIGHT video.</li>
+          </ul>
+          <p>After making your choice, you will be asked to rate your confidence in your decision on a scale of 1–5.</p>
+          <p><strong>There are no right or wrong answers.</strong> We are interested in your spontaneous perception.</p>
+          <p class="instructions-continue">Press <kbd>SPACE</kbd> to continue.</p>
+          <button type="button" id="instructions-start" class="btn btn-primary">Press SPACE to continue</button>
         </div>
       </div>
     </section>

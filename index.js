@@ -184,7 +184,16 @@
     });
 
     btn.addEventListener("click", () => {
-      if (checkbox.checked) showScreen("instructions-screen");
+      if (checkbox.checked) showScreen("welcome-screen");
+    });
+  }
+
+  // ---------------------------------------------------------------------------
+  // Welcome
+  // ---------------------------------------------------------------------------
+  function initWelcome() {
+    document.getElementById("welcome-continue").addEventListener("click", () => {
+      showScreen("instructions-screen");
     });
   }
 
@@ -192,8 +201,17 @@
   // Instructions
   // ---------------------------------------------------------------------------
   function initInstructions() {
-    document.getElementById("instructions-start").addEventListener("click", () => {
+    const startBtn = document.getElementById("instructions-start");
+    const startFromInstructions = () => {
       startStudy();
+    };
+    startBtn.addEventListener("click", startFromInstructions);
+    document.addEventListener("keydown", function instructionsKeyHandler(e) {
+      if (document.getElementById("instructions-screen").classList.contains("active") && e.code === "Space") {
+        e.preventDefault();
+        startFromInstructions();
+        document.removeEventListener("keydown", instructionsKeyHandler);
+      }
     });
   }
 
@@ -319,21 +337,41 @@
   // Event bindings
   // ---------------------------------------------------------------------------
   function initTrialHandlers() {
-    document.getElementById("btn-left").addEventListener("click", () => {
-      document.querySelector(".gif-option[data-side='left']").classList.add("selected");
-      showConfidencePrompt("left");
-    });
+    const selectLeft = () => {
+      if (document.getElementById("confidence-section").hidden) {
+        document.querySelector(".gif-option[data-side='left']").classList.add("selected");
+        showConfidencePrompt("left");
+      }
+    };
+    const selectRight = () => {
+      if (document.getElementById("confidence-section").hidden) {
+        document.querySelector(".gif-option[data-side='right']").classList.add("selected");
+        showConfidencePrompt("right");
+      }
+    };
 
-    document.getElementById("btn-right").addEventListener("click", () => {
-      document.querySelector(".gif-option[data-side='right']").classList.add("selected");
-      showConfidencePrompt("right");
-    });
+    document.getElementById("btn-left").addEventListener("click", selectLeft);
+    document.getElementById("btn-right").addEventListener("click", selectRight);
 
     document.querySelectorAll(".gif-option").forEach((el) => {
       el.addEventListener("click", () => {
         const side = el.getAttribute("data-side");
         document.getElementById("btn-" + side).click();
       });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!document.getElementById("trial-screen").classList.contains("active")) return;
+      if (document.getElementById("confidence-section").hidden) {
+        if (e.key === "1") { e.preventDefault(); selectLeft(); }
+        else if (e.key === "2") { e.preventDefault(); selectRight(); }
+      } else {
+        const num = parseInt(e.key, 10);
+        if (num >= 1 && num <= 5) {
+          e.preventDefault();
+          document.querySelector(`.btn-confidence[data-confidence="${num}"]`).click();
+        }
+      }
     });
 
     document.querySelectorAll(".btn-confidence").forEach((btn) => {
@@ -367,6 +405,7 @@
   function init() {
     if (checkProtocol()) return;
     initConsent();
+    initWelcome();
     initInstructions();
     initTrialHandlers();
   }
