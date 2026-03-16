@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gesture & Personality Perception Study</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Consent Screen -->
+    <section id="consent-screen" class="screen active">
+      <header class="study-header">
+        <h1>Gesture & Personality Perception Study</h1>
+        <p class="subtitle">Informed Consent</p>
+      </header>
+      <div class="content-card">
+        <div id="consent-content">
+          <p class="instruction-text">Please read the informed consent document before proceeding.</p>
+          <div id="consent-pdf-container">
+            <a id="consent-link" href="#" target="_blank" class="btn btn-consent-link">View consent form in new tab</a>
+            <object id="consent-pdf" data="" type="application/pdf" width="100%" height="480" title="Informed Consent Form">
+              <p class="pdf-embed-fallback">PDF preview not available in this browser. Use the button above to open the consent form.</p>
+            </object>
+          </div>
+          <div class="consent-checkbox">
+            <label>
+              <input type="checkbox" id="consent-checkbox">
+              I have read the informed consent form and agree to participate in this study.
+            </label>
+          </div>
+          <button type="button" id="consent-continue" class="btn btn-primary" disabled>Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instructions Screen -->
+    <section id="instructions-screen" class="screen">
+      <header class="study-header">
+        <h1>Study Instructions</h1>
+      </header>
+      <div class="content-card">
+        <div class="instructions-content">
+          <p>In this study, you will view pairs of short animated clips showing different people's gestures and body language.</p>
+          <p>For each pair, you will be asked a question. Please select the person (left or right) who best matches the description.</p>
+          <p><strong>There are no right or wrong answers</strong> — we are interested in your natural impressions.</p>
+          <ul>
+            <li>Watch each clip carefully before making your choice.</li>
+            <li>You may take as long as you need.</li>
+            <li>Please complete all trials without skipping.</li>
+          </ul>
+          <p class="estimate">Estimated time: approximately 10–15 minutes.</p>
+          <button type="button" id="instructions-start" class="btn btn-primary">Begin Study</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trial Screen -->
+    <section id="trial-screen" class="screen">
+      <header class="study-header compact">
+        <span id="progress-text">Trial 1 of 20</span>
+      </header>
+      <div class="content-card trial-card">
+        <p id="trial-question" class="trial-question"></p>
+        <div class="gif-pair">
+          <div class="gif-option" data-side="left">
+            <img id="gif-left" src="" alt="Person A">
+            <span class="option-label">Person A</span>
+          </div>
+          <div class="gif-option" data-side="right">
+            <img id="gif-right" src="" alt="Person B">
+            <span class="option-label">Person B</span>
+          </div>
+        </div>
+        <div class="trial-actions">
+          <button type="button" id="btn-left" class="btn btn-choice">Select Person A</button>
+          <button type="button" id="btn-right" class="btn btn-choice">Select Person B</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Completion Screen -->
+    <section id="completion-screen" class="screen">
+      <header class="study-header">
+        <h1>Thank You</h1>
+      </header>
+      <div class="content-card">
+        <p>You have completed the study. Thank you for your participation.</p>
+        <p>Your responses have been recorded. You may close this window.</p>
+        <p id="completion-id" class="completion-id"></p>
+      </div>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
