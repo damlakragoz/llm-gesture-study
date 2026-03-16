@@ -29,6 +29,7 @@ function doPost(e) {
         "right_gif",
         "selected_side",
         "selected_gif",
+        "confidence",
       ]);
     }
 
@@ -54,6 +55,7 @@ function doPost(e) {
         r.rightGif,
         r.selectedSide,
         r.selectedGif,
+        r.confidence !== undefined ? r.confidence : "",
       ]);
     }
 

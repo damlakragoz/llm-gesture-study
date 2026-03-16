@@ -46,6 +46,7 @@
         <div class="instructions-content">
           <p>In this study, you will view pairs of short animated clips showing different people's gestures and body language.</p>
           <p>For each pair, you will be asked a question. Please select the person (left or right) who best matches the description.</p>
+          <p>After each choice, you will be asked how confident you are in your answer (1 = not at all confident, 5 = very confident).</p>
           <p><strong>There are no right or wrong answers</strong> — we are interested in your natural impressions.</p>
           <ul>
             <li>Watch each clip carefully before making your choice.</li>
@@ -78,6 +79,16 @@
         <div class="trial-actions">
           <button type="button" id="btn-left" class="btn btn-choice">Select Person A</button>
           <button type="button" id="btn-right" class="btn btn-choice">Select Person B</button>
+        </div>
+        <div id="confidence-section" class="confidence-section" hidden>
+          <p class="confidence-prompt">How confident are you in your choice? (1 = not at all confident, 5 = very confident)</p>
+          <div class="confidence-buttons">
+            <button type="button" class="btn btn-confidence" data-confidence="1">1</button>
+            <button type="button" class="btn btn-confidence" data-confidence="2">2</button>
+            <button type="button" class="btn btn-confidence" data-confidence="3">3</button>
+            <button type="button" class="btn btn-confidence" data-confidence="4">4</button>
+            <button type="button" class="btn btn-confidence" data-confidence="5">5</button>
+          </div>
         </div>
       </div>
     </section>

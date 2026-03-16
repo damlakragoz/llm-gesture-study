@@ -88,6 +88,7 @@
   let responses = [];
   let participantId = "";
   let sessionId = "";
+  let pendingSelectedSide = null;
 
   // ---------------------------------------------------------------------------
   // URL params (Prolific: PROLIFIC_PID, STUDY_ID, SESSION_ID)
@@ -231,9 +232,21 @@
     document.querySelectorAll(".gif-option").forEach((o) => o.classList.remove("selected"));
     document.getElementById("btn-left").disabled = false;
     document.getElementById("btn-right").disabled = false;
+
+    // Hide confidence section
+    const confidenceSection = document.getElementById("confidence-section");
+    confidenceSection.hidden = true;
+    document.querySelectorAll(".btn-confidence").forEach((b) => b.classList.remove("selected"));
   }
 
-  function recordResponse(selectedSide) {
+  function showConfidencePrompt(selectedSide) {
+    document.getElementById("btn-left").disabled = true;
+    document.getElementById("btn-right").disabled = true;
+    document.getElementById("confidence-section").hidden = false;
+    pendingSelectedSide = selectedSide;
+  }
+
+  function recordResponse(selectedSide, confidence) {
     const trial = trials[currentTrialIndex];
     responses.push({
       trialIndex: currentTrialIndex + 1,
@@ -243,6 +256,7 @@
       rightGif: trial.rightGif,
       selectedSide,
       selectedGif: selectedSide === "left" ? trial.leftGif : trial.rightGif,
+      confidence,
       timestamp: new Date().toISOString(),
     });
 
@@ -307,22 +321,25 @@
   function initTrialHandlers() {
     document.getElementById("btn-left").addEventListener("click", () => {
       document.querySelector(".gif-option[data-side='left']").classList.add("selected");
-      document.getElementById("btn-left").disabled = true;
-      document.getElementById("btn-right").disabled = true;
-      recordResponse("left");
+      showConfidencePrompt("left");
     });
 
     document.getElementById("btn-right").addEventListener("click", () => {
       document.querySelector(".gif-option[data-side='right']").classList.add("selected");
-      document.getElementById("btn-left").disabled = true;
-      document.getElementById("btn-right").disabled = true;
-      recordResponse("right");
+      showConfidencePrompt("right");
     });
 
     document.querySelectorAll(".gif-option").forEach((el) => {
       el.addEventListener("click", () => {
         const side = el.getAttribute("data-side");
         document.getElementById("btn-" + side).click();
+      });
+    });
+
+    document.querySelectorAll(".btn-confidence").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const confidence = parseInt(btn.getAttribute("data-confidence"), 10);
+        recordResponse(pendingSelectedSide, confidence);
       });
     });
   }
