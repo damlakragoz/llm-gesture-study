@@ -201,17 +201,8 @@
   // Instructions
   // ---------------------------------------------------------------------------
   function initInstructions() {
-    const startBtn = document.getElementById("instructions-start");
-    const startFromInstructions = () => {
+    document.getElementById("instructions-start").addEventListener("click", () => {
       startStudy();
-    };
-    startBtn.addEventListener("click", startFromInstructions);
-    document.addEventListener("keydown", function instructionsKeyHandler(e) {
-      if (document.getElementById("instructions-screen").classList.contains("active") && e.code === "Space") {
-        e.preventDefault();
-        startFromInstructions();
-        document.removeEventListener("keydown", instructionsKeyHandler);
-      }
     });
   }
 
