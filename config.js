@@ -15,7 +15,7 @@ const CONFIG = {
   // Google Apps Script Web App URL (deploy your Sheet as Web App, set to "Anyone")
   // Leave empty to skip server submission (responses only in browser)
   GOOGLE_SHEETS_WEB_APP_URL: "https://script.google.com/macros/s/AKfycbz16D2EhDDUJVo-GAYSFPEoRV7scN_sPJJaR3YMiPsISAdw0SbpX6GzQh4i_u7TBSA6/exec",
-
+  
   // Number of pair comparisons per question (total trials = 5 * this)
   TRIALS_PER_QUESTION: 4,
 
