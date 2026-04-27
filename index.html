@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,10 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <div id="app">
     <!-- Consent Screen -->
@@ -22,8 +25,10 @@
           <p class="instruction-text">Please read the informed consent document before proceeding.</p>
           <div id="consent-pdf-container">
             <a id="consent-link" href="#" target="_blank" class="btn btn-consent-link">View consent form in new tab</a>
-            <object id="consent-pdf" data="" type="application/pdf" width="100%" height="480" title="Informed Consent Form">
-              <p class="pdf-embed-fallback">PDF preview not available in this browser. Use the button above to open the consent form.</p>
+            <object id="consent-pdf" data="" type="application/pdf" width="100%" height="480"
+              title="Informed Consent Form">
+              <p class="pdf-embed-fallback">PDF preview not available in this browser. Use the button above to open the
+                consent form.</p>
             </object>
           </div>
           <div class="consent-checkbox">
@@ -47,7 +52,8 @@
           <p class="instruction-text">Welcome to the Personality Perception Study!</p>
           <p>This research is conducted under the supervision of Prof. Dr. Uğur Güdükbay at Bilkent University.</p>
           <p>In this experiment, you will view pairs of short video clips showing different movement profiles.</p>
-          <p>For each pair, you will be asked to judge which person appears to have MORE of a particular personality trait.</p>
+          <p>For each pair, you will be asked to judge which person appears to have MORE of a particular personality
+            trait.</p>
           <button type="button" id="welcome-continue" class="btn btn-primary">Continue</button>
         </div>
       </div>
@@ -60,8 +66,8 @@
       </header>
       <div class="content-card">
         <div class="instructions-content">
-          <p>First, you will see a fixation cross (+) in the center of the screen. Please focus your eyes on this cross.</p>
-          <p>You will then see TWO short, silent animations presented side-by-side, along with a personality-related question.</p>
+          <p>You will see TWO short, silent animations presented side-by-side, along with a personality-related
+            question.</p>
           <ul>
             <li>Observe both figures as they play for approximately 6 seconds.</li>
             <li>Read the question at the top of the screen (e.g., "Which person appears more outgoing?").</li>
@@ -100,7 +106,8 @@
           <button type="button" id="btn-right" class="btn btn-choice">Select Person B</button>
         </div>
         <div id="confidence-section" class="confidence-section" hidden>
-          <p class="confidence-prompt">How confident are you in your choice? (1 = not at all confident, 5 = very confident)</p>
+          <p class="confidence-prompt">How confident are you in your choice? (1 = not at all confident, 5 = very
+            confident)</p>
           <div class="confidence-buttons">
             <button type="button" class="btn btn-confidence" data-confidence="1">1</button>
             <button type="button" class="btn btn-confidence" data-confidence="2">2</button>
@@ -128,4 +135,5 @@
   <script src="config.js"></script>
   <script src="index.js"></script>
 </body>
+
 </html>

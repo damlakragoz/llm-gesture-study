@@ -271,8 +271,10 @@
     // Reset selection state
     document.querySelector(".gif-pair").classList.remove("disabled");
     document.querySelectorAll(".gif-option").forEach((o) => o.classList.remove("selected"));
-    document.getElementById("btn-left").disabled = false;
-    document.getElementById("btn-right").disabled = false;
+    document.querySelectorAll(".btn-choice").forEach((b) => {
+      b.disabled = false;
+      b.classList.remove("selected");
+    });
 
     // Hide confidence section
     const confidenceSection = document.getElementById("confidence-section");
@@ -281,8 +283,8 @@
   }
 
   function showConfidencePrompt(selectedSide) {
-    document.getElementById("btn-left").disabled = true;
-    document.getElementById("btn-right").disabled = true;
+    document.querySelectorAll(".btn-choice").forEach((b) => b.classList.remove("selected"));
+    document.getElementById("btn-" + selectedSide).classList.add("selected");
     document.getElementById("confidence-section").hidden = false;
     pendingSelectedSide = selectedSide;
   }
@@ -361,28 +363,30 @@
   // Event bindings
   // ---------------------------------------------------------------------------
   function initTrialHandlers() {
-    const selectLeft = () => {
-      if (document.getElementById("confidence-section").hidden) {
+    const handleSelection = (side) => {
+      if (pendingSelectedSide === side) {
+        // Toggle off (unselect)
+        document.querySelector(".gif-pair").classList.remove("disabled");
+        document.querySelectorAll(".gif-option").forEach((o) => o.classList.remove("selected"));
+        document.querySelectorAll(".btn-choice").forEach((b) => b.classList.remove("selected"));
+        document.getElementById("confidence-section").hidden = true;
+        pendingSelectedSide = null;
+      } else {
+        // Select or Switch
         document.querySelector(".gif-pair").classList.add("disabled");
-        document.querySelector(".gif-option[data-side='left']").classList.add("selected");
-        showConfidencePrompt("left");
-      }
-    };
-    const selectRight = () => {
-      if (document.getElementById("confidence-section").hidden) {
-        document.querySelector(".gif-pair").classList.add("disabled");
-        document.querySelector(".gif-option[data-side='right']").classList.add("selected");
-        showConfidencePrompt("right");
+        document.querySelectorAll(".gif-option").forEach((o) => o.classList.remove("selected"));
+        document.querySelector(`.gif-option[data-side='${side}']`).classList.add("selected");
+        showConfidencePrompt(side);
       }
     };
 
-    document.getElementById("btn-left").addEventListener("click", selectLeft);
-    document.getElementById("btn-right").addEventListener("click", selectRight);
+    document.getElementById("btn-left").addEventListener("click", () => handleSelection("left"));
+    document.getElementById("btn-right").addEventListener("click", () => handleSelection("right"));
 
     document.querySelectorAll(".gif-option").forEach((el) => {
       el.addEventListener("click", () => {
         const side = el.getAttribute("data-side");
-        document.getElementById("btn-" + side).click();
+        handleSelection(side);
       });
     });
 
