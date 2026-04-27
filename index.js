@@ -51,13 +51,11 @@
     "high_extraversion.gif",
     "high_extraversion_baseline.gif",
     "high_extraversion_llm_run1.gif",
-    "high_extraversion_llm_run2.gif",
     "high_extraversion_llm_run3.gif",
     "high_extraversion_llm_run4.gif",
     "high_neuroticism.gif",
     "high_neuroticism_baseline.gif",
     "high_neuroticism_llm_run1.gif",
-    "high_neuroticism_llm_run2.gif",
     "high_neuroticism_llm_run3.gif",
     "high_neuroticism_llm_run4.gif",
     "high_openness.gif",
@@ -65,7 +63,6 @@
     "high_openness_llm_run1.gif",
     "high_openness_llm_run2.gif",
     "high_openness_llm_run3.gif",
-    "high_openness_llm_run4.gif",
     "low_agreeableness.gif",
     "low_agreeableness_llm_run1.gif",
     "low_agreeableness_llm_run2.gif",
@@ -77,7 +74,6 @@
     "low_conscientiousness_llm_run3.gif",
     "low_conscientiousness_llm_run4.gif",
     "low_extraversion.gif",
-    "low_extraversion_baseline.gif",
     "low_extraversion_llm_run1.gif",
     "low_extraversion_llm_run2.gif",
     "low_extraversion_llm_run3.gif",
@@ -141,8 +137,14 @@
 
     for (let q = 0; q < shuffledQuestions.length; q++) {
       const question = shuffledQuestions[q];
+      
+      // AUDIT FIX: Group GIFs by trait so the question matches the visuals
+      // "emotional_stability" maps to "neuroticism" in file naming
+      const traitInternal = question.id === "emotional_stability" ? "neuroticism" : question.id;
+      const traitGifs = GIF_FILES.filter(f => f.includes(traitInternal) || f.startsWith("neutral"));
+
       for (let t = 0; t < trialsPerQ; t++) {
-        const [left, right] = pickRandomPair(GIF_FILES);
+        const [left, right] = pickRandomPair(traitGifs);
         const swap = Math.random() < 0.5;
         allTrials.push({
           questionId: question.id,
@@ -160,6 +162,9 @@
   }
 
   function pickRandomPair(arr) {
+    // If for some reason we have < 2 GIFs after filtering
+    if (arr.length < 2) return [GIF_FILES[0], GIF_FILES[1]];
+
     const i = Math.floor(Math.random() * arr.length);
     let j = Math.floor(Math.random() * arr.length);
     while (j === i) j = Math.floor(Math.random() * arr.length);
@@ -256,7 +261,15 @@
     imgLeft.alt = "Person A";
     imgRight.alt = "Person B";
 
+    // AUDIT FIX: Preload next trial GIFs
+    if (currentTrialIndex + 1 < trials.length) {
+      const next = trials[currentTrialIndex + 1];
+      new Image().src = next.leftPath;
+      new Image().src = next.rightPath;
+    }
+
     // Reset selection state
+    document.querySelector(".gif-pair").classList.remove("disabled");
     document.querySelectorAll(".gif-option").forEach((o) => o.classList.remove("selected"));
     document.getElementById("btn-left").disabled = false;
     document.getElementById("btn-right").disabled = false;
@@ -350,12 +363,14 @@
   function initTrialHandlers() {
     const selectLeft = () => {
       if (document.getElementById("confidence-section").hidden) {
+        document.querySelector(".gif-pair").classList.add("disabled");
         document.querySelector(".gif-option[data-side='left']").classList.add("selected");
         showConfidencePrompt("left");
       }
     };
     const selectRight = () => {
       if (document.getElementById("confidence-section").hidden) {
+        document.querySelector(".gif-pair").classList.add("disabled");
         document.querySelector(".gif-option[data-side='right']").classList.add("selected");
         showConfidencePrompt("right");
       }
@@ -371,6 +386,9 @@
       });
     });
 
+    // Keyboard controls removed as per user request
+    // All interactions should now be mouse/touch driven
+    /*
     document.addEventListener("keydown", (e) => {
       if (!document.getElementById("trial-screen").classList.contains("active")) return;
       if (document.getElementById("confidence-section").hidden) {
@@ -384,6 +402,7 @@
         }
       }
     });
+    */
 
     document.querySelectorAll(".btn-confidence").forEach((btn) => {
       btn.addEventListener("click", () => {

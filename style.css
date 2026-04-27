@@ -219,19 +219,32 @@ kbd {
   border-radius: var(--radius);
   padding: 0.75rem;
   text-align: center;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-}
-
-.gif-option:hover {
-  border-color: var(--color-primary);
-  background: rgba(13, 110, 253, 0.04);
-}
-
-.gif-option.selected {
-  border-color: var(--color-accent);
-  background: rgba(25, 135, 84, 0.08);
-}
+222:   cursor: pointer;
+223:   transition: border-color 0.15s, background 0.15s, opacity 0.15s;
+224: }
+225: 
+226: /* Disable hover and pointer when the pair is locked */
+227: .gif-pair.disabled .gif-option {
+228:   cursor: default;
+229:   pointer-events: none;
+230: }
+231: 
+232: .gif-option:hover:not(.disabled .gif-option) {
+233:   border-color: var(--color-primary);
+234:   background: rgba(13, 110, 253, 0.04);
+235: }
+236: 
+237: .gif-option.selected {
+238:   border-color: var(--color-accent);
+239:   background: rgba(25, 135, 84, 0.08);
+240:   opacity: 1 !important;
+241: }
+242: 
+243: /* Dim unselected GIF after choice */
+244: .gif-pair.disabled .gif-option:not(.selected) {
+245:   opacity: 0.5;
+246:   filter: grayscale(0.5);
+247: }
 
 .gif-option img {
   width: 100%;
