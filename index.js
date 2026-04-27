@@ -280,6 +280,7 @@
     const confidenceSection = document.getElementById("confidence-section");
     confidenceSection.hidden = true;
     document.querySelectorAll(".btn-confidence").forEach((b) => b.classList.remove("selected"));
+    pendingSelectedSide = null;
   }
 
   function showConfidencePrompt(selectedSide) {
