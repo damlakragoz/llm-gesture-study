@@ -12,23 +12,23 @@
   const QUESTIONS = [
     {
       id: "extraversion",
-      text: "Which person appears more outgoing, sociable, and energetic?",
+      text: "Hangi kişi daha dışa dönük, sosyal ve enerjik görünüyor?",
     },
     {
       id: "agreeableness",
-      text: "Which person appears more friendly, cooperative, and warm?",
+      text: "Hangi kişi daha arkadaş canlısı, işbirlikçi ve sıcak görünüyor?",
     },
     {
       id: "conscientiousness",
-      text: "Which person appears more organized, responsible, and reliable?",
+      text: "Hangi kişi daha düzenli, sorumlu ve güvenilir görünüyor?",
     },
     {
       id: "emotional_stability",
-      text: "Which person appears more calm, emotionally stable, and resilient?",
+      text: "Hangi kişi daha sakin, duygusal olarak dengeli ve dayanıklı görünüyor?",
     },
     {
       id: "openness",
-      text: "Which person appears more open to new experiences, creative, and curious?",
+      text: "Hangi kişi yeni deneyimlere daha açık, yaratıcı ve meraklı görünüyor?",
     },
   ];
 
@@ -250,7 +250,7 @@
     const trial = trials[currentTrialIndex];
     const total = trials.length;
 
-    document.getElementById("progress-text").textContent = `Trial ${currentTrialIndex + 1} of ${total}`;
+    document.getElementById("progress-text").textContent = `Deneme ${currentTrialIndex + 1} / ${total}`;
     document.getElementById("trial-question").textContent = trial.questionText;
 
     const imgLeft = document.getElementById("gif-left");
@@ -258,8 +258,8 @@
 
     imgLeft.src = trial.leftPath;
     imgRight.src = trial.rightPath;
-    imgLeft.alt = "Person A";
-    imgRight.alt = "Person B";
+    imgLeft.alt = "Kişi A";
+    imgRight.alt = "Kişi B";
 
     // AUDIT FIX: Preload next trial GIFs
     if (currentTrialIndex + 1 < trials.length) {
@@ -317,7 +317,7 @@
     showScreen("completion-screen");
 
     const completionEl = document.getElementById("completion-id");
-    completionEl.textContent = `Session ID: ${sessionId}`;
+    completionEl.textContent = `Oturum kimliği: ${sessionId}`;
 
     submitToGoogleSheets();
 
@@ -423,11 +423,11 @@
   function checkProtocol() {
     if (window.location.protocol === "file:") {
       document.body.innerHTML =
-        '<div style="max-width:500px;margin:2rem auto;padding:2rem;font-family:sans-serif;">' +
-        "<h2>Cannot run from file</h2>" +
-        "<p>Open this page via a local server. From the project root (<code>cs490/</code>), run:</p>" +
+        '<div style="max-width:500px;margin:2rem auto;padding:2rem;font-family:sans-serif;" lang="tr">' +
+        "<h2>Dosya olarak açılamaz</h2>" +
+        "<p>Bu sayfayı yerel bir sunucu üzerinden açın. Proje kök dizininden şunu çalıştırın:</p>" +
         "<pre style='background:#f0f0f0;padding:1rem;border-radius:6px;'>python3 -m http.server 8000</pre>" +
-        "<p>Then open: <a href='http://localhost:8000/study/'>http://localhost:8000/study/</a></p>" +
+        "<p>Ardından şu adresi kullanın: <a href=\"http://localhost:8000/\">http://localhost:8000/</a> (study klasörünüze göre yolu güncelleyin)</p>" +
         "</div>";
       return true;
     }

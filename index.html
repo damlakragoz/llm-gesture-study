@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gesture & Personality Perception Study</title>
+  <title>Jest ve Kişilik Algısı Çalışması</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
 <body>
   <div id="app">
     <!-- Consent Screen -->
-    <section id="consent-screen" class="screen active">
+    <section id="consent-screen" class="screen active" lang="en">
       <header class="study-header">
         <h1>Gesture & Personality Perception Study</h1>
         <p class="subtitle">Informed Consent</p>
@@ -45,16 +45,17 @@
     <!-- Welcome Screen -->
     <section id="welcome-screen" class="screen">
       <header class="study-header">
-        <h1>WELCOME</h1>
+        <h1>HOŞ GELDİNİZ</h1>
       </header>
       <div class="content-card">
         <div class="welcome-content">
-          <p class="instruction-text">Welcome to the Personality Perception Study!</p>
-          <p>This research is conducted under the supervision of Prof. Dr. Uğur Güdükbay at Bilkent University.</p>
-          <p>In this experiment, you will view pairs of short video clips showing different movement profiles.</p>
-          <p>For each pair, you will be asked to judge which person appears to have MORE of a particular personality
-            trait.</p>
-          <button type="button" id="welcome-continue" class="btn btn-primary">Continue</button>
+          <p class="instruction-text">Kişilik Algısı Çalışmasına hoş geldiniz!</p>
+          <p>Bu araştırma, Bilkent Üniversitesi’nde Prof. Dr. Uğur Güdükbay gözetiminde yürütülmektedir.</p>
+          <p>Bu deneyde, farklı hareket profillerini gösteren kısa video kliplerinin yan yana çiftler halinde sunulduğunu
+            göreceksiniz.</p>
+          <p>Her çift için, belirli bir kişilik özelliğine hangi kişinin <em>daha fazla</em> sahip göründüğünü
+            değerlendirmeniz istenecektir.</p>
+          <button type="button" id="welcome-continue" class="btn btn-primary">Devam et</button>
         </div>
       </div>
     </section>
@@ -62,24 +63,23 @@
     <!-- Instructions Screen -->
     <section id="instructions-screen" class="screen">
       <header class="study-header">
-        <h1>INSTRUCTIONS</h1>
+        <h1>TALİMATLAR</h1>
       </header>
       <div class="content-card">
         <div class="instructions-content">
-          <p>You will see TWO short, silent animations presented side-by-side, along with a personality-related
-            question.</p>
+          <p>Yan yana iki kısa, sessiz animasyon ve kişilikle ilgili bir soru göreceksiniz.</p>
           <ul>
-            <li>Observe both figures as they play for approximately 6 seconds.</li>
-            <li>Read the question at the top of the screen (e.g., "Which person appears more outgoing?").</li>
+            <li>Her iki figürü de yaklaşık 6 saniye boyunca izleyin.</li>
+            <li>Ekranın üst kısmındaki soruyu okuyun (örneğin: “Hangi kişi daha dışa dönük görünüyor?”).</li>
           </ul>
-          <p>While or after the videos play, make your selection based on your first impression:</p>
+          <p>Videolar oynatılırken veya sonrasında ilk izleniminize göre seçiminizi yapın:</p>
           <ul>
-            <li>Press <kbd>1</kbd> to select the LEFT video.</li>
-            <li>Press <kbd>2</kbd> to select the RIGHT video.</li>
+            <li>Sol animasyonu seçmek için sol taraftaki alana veya <strong>Kişi A’yı seç</strong> düğmesine tıklayın.</li>
+            <li>Sağ animasyonu seçmek için sağ taraftaki alana veya <strong>Kişi B’yi seç</strong> düğmesine tıklayın.</li>
           </ul>
-          <p>After making your choice, you will be asked to rate your confidence in your decision on a scale of 1–5.</p>
-          <p><strong>There are no right or wrong answers.</strong> We are interested in your spontaneous perception.</p>
-          <button type="button" id="instructions-start" class="btn btn-primary">Continue</button>
+          <p>Seçiminizi yaptıktan sonra kararınıza olan güveninizi 1–5 arası bir ölçekte derecelendirmeniz istenecektir.</p>
+          <p><strong>Doğru ya da yanlış cevap yoktur.</strong> Bizim için önemli olan, spontane algınızdır.</p>
+          <button type="button" id="instructions-start" class="btn btn-primary">Devam et</button>
         </div>
       </div>
     </section>
@@ -87,27 +87,27 @@
     <!-- Trial Screen -->
     <section id="trial-screen" class="screen">
       <header class="study-header compact">
-        <span id="progress-text">Trial 1 of 20</span>
+        <span id="progress-text">Deneme 1 / 20</span>
       </header>
       <div class="content-card trial-card">
         <p id="trial-question" class="trial-question"></p>
         <div class="gif-pair">
           <div class="gif-option" data-side="left">
-            <img id="gif-left" src="" alt="Person A">
-            <span class="option-label">Person A</span>
+            <img id="gif-left" src="" alt="Kişi A">
+            <span class="option-label">Kişi A</span>
           </div>
           <div class="gif-option" data-side="right">
-            <img id="gif-right" src="" alt="Person B">
-            <span class="option-label">Person B</span>
+            <img id="gif-right" src="" alt="Kişi B">
+            <span class="option-label">Kişi B</span>
           </div>
         </div>
         <div class="trial-actions">
-          <button type="button" id="btn-left" class="btn btn-choice">Select Person A</button>
-          <button type="button" id="btn-right" class="btn btn-choice">Select Person B</button>
+          <button type="button" id="btn-left" class="btn btn-choice">Kişi A’yı seç</button>
+          <button type="button" id="btn-right" class="btn btn-choice">Kişi B’yi seç</button>
         </div>
         <div id="confidence-section" class="confidence-section" hidden>
-          <p class="confidence-prompt">How confident are you in your choice? (1 = not at all confident, 5 = very
-            confident)</p>
+          <p class="confidence-prompt">Seçiminize ne kadar güveniyorsunuz? (1 = hiç güvenmiyorum, 5 = çok
+            güveniyorum)</p>
           <div class="confidence-buttons">
             <button type="button" class="btn btn-confidence" data-confidence="1">1</button>
             <button type="button" class="btn btn-confidence" data-confidence="2">2</button>
@@ -122,11 +122,11 @@
     <!-- Completion Screen -->
     <section id="completion-screen" class="screen">
       <header class="study-header">
-        <h1>Thank You</h1>
+        <h1>Teşekkürler</h1>
       </header>
       <div class="content-card">
-        <p>You have completed the study. Thank you for your participation.</p>
-        <p>Your responses have been recorded. You may close this window.</p>
+        <p>Çalışmayı tamamladınız. Katılımınız için teşekkür ederiz.</p>
+        <p>Yanıtlarınız kaydedilmiştir. Bu pencereyi kapatabilirsiniz.</p>
         <p id="completion-id" class="completion-id"></p>
       </div>
     </section>
