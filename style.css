@@ -143,6 +143,7 @@ body {
 
 .consent-checkbox label {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
   cursor: pointer;
@@ -156,6 +157,100 @@ body {
 .instruction-text {
   margin: 0 0 1rem 0;
   color: var(--color-text);
+}
+
+/* Bilingual UI (Turkish primary, English secondary) */
+.lang-secondary {
+  display: block;
+  font-size: 0.88em;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-top: 0.35rem;
+}
+
+.study-header h1.bilingual-heading {
+  line-height: 1.25;
+}
+
+.study-header h1.bilingual-heading .lang-secondary {
+  font-family: var(--font-sans);
+  font-size: 0.55em;
+  font-weight: 500;
+  font-style: italic;
+  margin-top: 0.35rem;
+}
+
+#progress-text {
+  display: block;
+  text-align: center;
+  line-height: 1.35;
+}
+
+#progress-text .lang-secondary {
+  margin-top: 0.2rem;
+  font-size: 0.85em;
+}
+
+.trial-question .lang-secondary {
+  margin-top: 0.4rem;
+}
+
+.gif-option .option-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  margin-top: 0.35rem;
+}
+
+.gif-option .option-label .lang-secondary {
+  margin-top: 0;
+  font-size: 0.85em;
+}
+
+.btn-bilingual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.btn-bilingual .lang-secondary {
+  margin-top: 0;
+  font-size: 0.78em;
+  font-weight: 400;
+  opacity: 0.92;
+}
+
+.consent-checkbox label .lang-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.consent-checkbox label .lang-row input {
+  margin-top: 0.35rem;
+}
+
+.consent-checkbox label .bilingual-label-text {
+  flex: 1;
+}
+
+.consent-checkbox label .bilingual-label-text .lang-secondary {
+  margin-top: 0.35rem;
+}
+
+a.btn-consent-link.btn-bilingual {
+  text-align: center;
+}
+
+.completion-id .lang-secondary {
+  margin-top: 0.25rem;
+  font-size: 0.9em;
 }
 
 /* Instructions */
@@ -175,6 +270,10 @@ body {
 
 .instructions-content li {
   margin-bottom: 0.5rem;
+}
+
+.instructions-content li .lang-secondary {
+  margin-top: 0.25rem;
 }
 
 .estimate {

@@ -12,23 +12,28 @@
   const QUESTIONS = [
     {
       id: "extraversion",
-      text: "Hangi kişi daha dışa dönük, sosyal ve enerjik görünüyor?",
+      textEn: "Which person appears more outgoing, sociable, and energetic?",
+      textTr: "Hangi kişi daha dışa dönük, sosyal ve enerjik görünüyor?",
     },
     {
       id: "agreeableness",
-      text: "Hangi kişi daha arkadaş canlısı, işbirlikçi ve sıcak görünüyor?",
+      textEn: "Which person appears more friendly, cooperative, and warm?",
+      textTr: "Hangi kişi daha arkadaş canlısı, işbirlikçi ve sıcak görünüyor?",
     },
     {
       id: "conscientiousness",
-      text: "Hangi kişi daha düzenli, sorumlu ve güvenilir görünüyor?",
+      textEn: "Which person appears more organized, responsible, and reliable?",
+      textTr: "Hangi kişi daha düzenli, sorumlu ve güvenilir görünüyor?",
     },
     {
       id: "emotional_stability",
-      text: "Hangi kişi daha sakin, duygusal olarak dengeli ve dayanıklı görünüyor?",
+      textEn: "Which person appears more calm, emotionally stable, and resilient?",
+      textTr: "Hangi kişi daha sakin, duygusal olarak dengeli ve dayanıklı görünüyor?",
     },
     {
       id: "openness",
-      text: "Hangi kişi yeni deneyimlere daha açık, yaratıcı ve meraklı görünüyor?",
+      textEn: "Which person appears more open to new experiences, creative, and curious?",
+      textTr: "Hangi kişi yeni deneyimlere daha açık, yaratıcı ve meraklı görünüyor?",
     },
   ];
 
@@ -148,7 +153,8 @@
         const swap = Math.random() < 0.5;
         allTrials.push({
           questionId: question.id,
-          questionText: question.text,
+          questionText: question.textEn,
+          questionTextTr: question.textTr,
           leftGif: swap ? right : left,
           rightGif: swap ? left : right,
           leftPath: `${animPath}/${swap ? right : left}`,
@@ -200,7 +206,8 @@
       pdfObj.data = pdfUrl;
     } else {
       document.getElementById("consent-pdf-container").innerHTML =
-        '<p class="consent-placeholder">Please add your consent form PDF URL in <code>config.js</code> (CONSENT_PDF_URL).</p>';
+        '<p class="consent-placeholder"><span lang="tr">Onam formu PDF adresini <code>config.js</code> dosyasına ekleyin (CONSENT_PDF_URL).</span>' +
+        '<span class="lang-secondary" lang="en">Please add your consent form PDF URL in <code>config.js</code> (CONSENT_PDF_URL).</span></p>';
     }
 
     checkbox.addEventListener("change", () => {
@@ -250,16 +257,18 @@
     const trial = trials[currentTrialIndex];
     const total = trials.length;
 
-    document.getElementById("progress-text").textContent = `Deneme ${currentTrialIndex + 1} / ${total}`;
-    document.getElementById("trial-question").textContent = trial.questionText;
+    document.getElementById("progress-tr").textContent = `Deneme ${currentTrialIndex + 1} / ${total}`;
+    document.getElementById("progress-en").textContent = `Trial ${currentTrialIndex + 1} of ${total}`;
+    document.getElementById("trial-q-tr").textContent = trial.questionTextTr;
+    document.getElementById("trial-q-en").textContent = trial.questionText;
 
     const imgLeft = document.getElementById("gif-left");
     const imgRight = document.getElementById("gif-right");
 
     imgLeft.src = trial.leftPath;
     imgRight.src = trial.rightPath;
-    imgLeft.alt = "Kişi A";
-    imgRight.alt = "Kişi B";
+    imgLeft.alt = "Kişi A / Person A";
+    imgRight.alt = "Kişi B / Person B";
 
     // AUDIT FIX: Preload next trial GIFs
     if (currentTrialIndex + 1 < trials.length) {
@@ -317,7 +326,12 @@
     showScreen("completion-screen");
 
     const completionEl = document.getElementById("completion-id");
-    completionEl.textContent = `Oturum kimliği: ${sessionId}`;
+    completionEl.innerHTML =
+      '<span lang="tr">Oturum kimliği: ' +
+      sessionId +
+      '</span><span class="lang-secondary" lang="en">Session ID: ' +
+      sessionId +
+      "</span>";
 
     submitToGoogleSheets();
 
@@ -423,11 +437,15 @@
   function checkProtocol() {
     if (window.location.protocol === "file:") {
       document.body.innerHTML =
-        '<div style="max-width:500px;margin:2rem auto;padding:2rem;font-family:sans-serif;" lang="tr">' +
-        "<h2>Dosya olarak açılamaz</h2>" +
-        "<p>Bu sayfayı yerel bir sunucu üzerinden açın. Proje kök dizininden şunu çalıştırın:</p>" +
-        "<pre style='background:#f0f0f0;padding:1rem;border-radius:6px;'>python3 -m http.server 8000</pre>" +
-        "<p>Ardından şu adresi kullanın: <a href=\"http://localhost:8000/\">http://localhost:8000/</a> (study klasörünüze göre yolu güncelleyin)</p>" +
+        '<div style="max-width:520px;margin:2rem auto;padding:2rem;font-family:sans-serif;line-height:1.55;">' +
+        "<h2><span lang=\"tr\">Dosya olarak açılamaz</span><br><small style=\"color:#555;font-weight:400;\"><span lang=\"en\">Cannot run from file</span></small></h2>" +
+        "<p><span lang=\"tr\">Bu sayfayı yerel bir sunucu üzerinden açın. Proje kök dizininden şunu çalıştırın:</span><br>" +
+        "<small style=\"color:#555;\"><span lang=\"en\">Open this page via a local server. From the project root, run:</span></small></p>" +
+        "<pre style=\"background:#f0f0f0;padding:1rem;border-radius:6px;\">python3 -m http.server 8000</pre>" +
+        "<p><span lang=\"tr\">Ardından tarayıcıda örneğin şu adresi açın:</span> " +
+        "<a href=\"http://localhost:8000/\">http://localhost:8000/</a><br>" +
+        "<small style=\"color:#555;\"><span lang=\"en\">Then open (adjust path if your files are in a subfolder):</span> " +
+        "<a href=\"http://localhost:8000/\">http://localhost:8000/</a></small></p>" +
         "</div>";
       return true;
     }

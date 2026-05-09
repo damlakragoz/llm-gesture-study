@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jest ve Kişilik Algısı Çalışması</title>
+  <title>Jest ve Kişilik Algısı Çalışması / Gesture & Personality Perception Study</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,30 +14,56 @@
 
 <body>
   <div id="app">
-    <!-- Consent Screen -->
-    <section id="consent-screen" class="screen active" lang="en">
+    <!-- Consent Screen: bilingual chrome only; embedded PDF unchanged -->
+    <section id="consent-screen" class="screen active">
       <header class="study-header">
-        <h1>Gesture & Personality Perception Study</h1>
-        <p class="subtitle">Informed Consent</p>
+        <h1 class="bilingual-heading">
+          <span lang="tr">Jest ve Kişilik Algısı Çalışması</span>
+          <span class="lang-secondary" lang="en">Gesture &amp; Personality Perception Study</span>
+        </h1>
+        <p class="subtitle">
+          <span lang="tr">Bilgilendirilmiş Onam</span>
+          <span class="lang-secondary" lang="en">Informed Consent</span>
+        </p>
       </header>
       <div class="content-card">
         <div id="consent-content">
-          <p class="instruction-text">Please read the informed consent document before proceeding.</p>
+          <p class="instruction-text">
+            <span lang="tr">Devam etmeden önce bilgilendirilmiş onam belgesini okuyunuz.</span>
+            <span class="lang-secondary" lang="en">Please read the informed consent document before proceeding.</span>
+          </p>
           <div id="consent-pdf-container">
-            <a id="consent-link" href="#" target="_blank" class="btn btn-consent-link">View consent form in new tab</a>
+            <a id="consent-link" href="#" target="_blank"
+              class="btn btn-consent-link btn-bilingual">
+              <span lang="tr">Onam formunu yeni sekmede aç</span>
+              <span class="lang-secondary" lang="en">View consent form in new tab</span>
+            </a>
             <object id="consent-pdf" data="" type="application/pdf" width="100%" height="480"
-              title="Informed Consent Form">
-              <p class="pdf-embed-fallback">PDF preview not available in this browser. Use the button above to open the
-                consent form.</p>
+              title="Bilgilendirilmiş onam formu / Informed consent form">
+              <p class="pdf-embed-fallback">
+                <span lang="tr">PDF önizlemesi bu tarayıcıda kullanılamıyor. Onam formunu açmak için yukarıdaki
+                  düğmeyi kullanın.</span>
+                <span class="lang-secondary" lang="en">PDF preview not available in this browser. Use the button above
+                  to open the consent form.</span>
+              </p>
             </object>
           </div>
           <div class="consent-checkbox">
             <label>
-              <input type="checkbox" id="consent-checkbox">
-              I have read the informed consent form and agree to participate in this study.
+              <span class="lang-row">
+                <input type="checkbox" id="consent-checkbox">
+                <span class="bilingual-label-text">
+                  <span lang="tr">Bilgilendirilmiş onam formunu okudum ve bu çalışmaya katılmayı kabul ediyorum.</span>
+                  <span class="lang-secondary" lang="en">I have read the informed consent form and agree to participate
+                    in this study.</span>
+                </span>
+              </span>
             </label>
           </div>
-          <button type="button" id="consent-continue" class="btn btn-primary" disabled>Continue</button>
+          <button type="button" id="consent-continue" class="btn btn-primary btn-bilingual" disabled>
+            <span lang="tr">Devam et</span>
+            <span class="lang-secondary" lang="en">Continue</span>
+          </button>
         </div>
       </div>
     </section>
@@ -45,17 +71,39 @@
     <!-- Welcome Screen -->
     <section id="welcome-screen" class="screen">
       <header class="study-header">
-        <h1>HOŞ GELDİNİZ</h1>
+        <h1 class="bilingual-heading">
+          <span lang="tr">HOŞ GELDİNİZ</span>
+          <span class="lang-secondary" lang="en">WELCOME</span>
+        </h1>
       </header>
       <div class="content-card">
         <div class="welcome-content">
-          <p class="instruction-text">Kişilik Algısı Çalışmasına hoş geldiniz!</p>
-          <p>Bu araştırma, Bilkent Üniversitesi’nde Prof. Dr. Uğur Güdükbay gözetiminde yürütülmektedir.</p>
-          <p>Bu deneyde, farklı hareket profillerini gösteren kısa video kliplerinin yan yana çiftler halinde sunulduğunu
-            göreceksiniz.</p>
-          <p>Her çift için, belirli bir kişilik özelliğine hangi kişinin <em>daha fazla</em> sahip göründüğünü
-            değerlendirmeniz istenecektir.</p>
-          <button type="button" id="welcome-continue" class="btn btn-primary">Devam et</button>
+          <p class="instruction-text">
+            <span lang="tr">Kişilik Algısı Çalışmasına hoş geldiniz!</span>
+            <span class="lang-secondary" lang="en">Welcome to the Personality Perception Study!</span>
+          </p>
+          <p>
+            <span lang="tr">Bu araştırma, Bilkent Üniversitesi’nde Prof. Dr. Uğur Güdükbay gözetiminde
+              yürütülmektedir.</span>
+            <span class="lang-secondary" lang="en">This research is conducted under the supervision of Prof. Dr. Uğur
+              Güdükbay at Bilkent University.</span>
+          </p>
+          <p>
+            <span lang="tr">Bu deneyde, farklı hareket profillerini gösteren kısa video kliplerinin yan yana çiftler
+              halinde sunulduğunu göreceksiniz.</span>
+            <span class="lang-secondary" lang="en">In this experiment, you will view pairs of short video clips showing
+              different movement profiles.</span>
+          </p>
+          <p>
+            <span lang="tr">Her çift için, belirli bir kişilik özelliğine hangi kişinin <em>daha fazla</em> sahip
+              göründüğünü değerlendirmeniz istenecektir.</span>
+            <span class="lang-secondary" lang="en">For each pair, you will be asked to judge which person appears to
+              have <em>more</em> of a particular personality trait.</span>
+          </p>
+          <button type="button" id="welcome-continue" class="btn btn-primary btn-bilingual">
+            <span lang="tr">Devam et</span>
+            <span class="lang-secondary" lang="en">Continue</span>
+          </button>
         </div>
       </div>
     </section>
@@ -63,23 +111,66 @@
     <!-- Instructions Screen -->
     <section id="instructions-screen" class="screen">
       <header class="study-header">
-        <h1>TALİMATLAR</h1>
+        <h1 class="bilingual-heading">
+          <span lang="tr">TALİMATLAR</span>
+          <span class="lang-secondary" lang="en">INSTRUCTIONS</span>
+        </h1>
       </header>
       <div class="content-card">
         <div class="instructions-content">
-          <p>Yan yana iki kısa, sessiz animasyon ve kişilikle ilgili bir soru göreceksiniz.</p>
+          <p>
+            <span lang="tr">Yan yana iki kısa, sessiz animasyon ve kişilikle ilgili bir soru göreceksiniz.</span>
+            <span class="lang-secondary" lang="en">You will see two short, silent animations presented side-by-side,
+              along with a personality-related question.</span>
+          </p>
           <ul>
-            <li>Her iki figürü de yaklaşık 6 saniye boyunca izleyin.</li>
-            <li>Ekranın üst kısmındaki soruyu okuyun (örneğin: “Hangi kişi daha dışa dönük görünüyor?”).</li>
+            <li>
+              <span lang="tr">Her iki figürü de yaklaşık 6 saniye boyunca izleyin.</span>
+              <span class="lang-secondary" lang="en">Observe both figures as they play for approximately 6
+                seconds.</span>
+            </li>
+            <li>
+              <span lang="tr">Ekranın üst kısmındaki soruyu okuyun (örneğin: “Hangi kişi daha dışa dönük
+                görünüyor?”).</span>
+              <span class="lang-secondary" lang="en">Read the question at the top of the screen (e.g., “Which person
+                appears more outgoing?”).</span>
+            </li>
           </ul>
-          <p>Videolar oynatılırken veya sonrasında ilk izleniminize göre seçiminizi yapın:</p>
+          <p>
+            <span lang="tr">Videolar oynatılırken veya sonrasında ilk izleniminize göre seçiminizi yapın:</span>
+            <span class="lang-secondary" lang="en">While or after the videos play, make your selection based on your
+              first impression:</span>
+          </p>
           <ul>
-            <li>Sol animasyonu seçmek için sol taraftaki alana veya <strong>Kişi A’yı seç</strong> düğmesine tıklayın.</li>
-            <li>Sağ animasyonu seçmek için sağ taraftaki alana veya <strong>Kişi B’yi seç</strong> düğmesine tıklayın.</li>
+            <li>
+              <span lang="tr">Sol animasyonu seçmek için sol taraftaki alana veya <strong>Kişi A’yı seç</strong>
+                düğmesine tıklayın.</span>
+              <span class="lang-secondary" lang="en">To choose the left animation, click the left area or the
+                <strong>Select Person A</strong> button.</span>
+            </li>
+            <li>
+              <span lang="tr">Sağ animasyonu seçmek için sağ taraftaki alana veya <strong>Kişi B’yi seç</strong>
+                düğmesine tıklayın.</span>
+              <span class="lang-secondary" lang="en">To choose the right animation, click the right area or the
+                <strong>Select Person B</strong> button.</span>
+            </li>
           </ul>
-          <p>Seçiminizi yaptıktan sonra kararınıza olan güveninizi 1–5 arası bir ölçekte derecelendirmeniz istenecektir.</p>
-          <p><strong>Doğru ya da yanlış cevap yoktur.</strong> Bizim için önemli olan, spontane algınızdır.</p>
-          <button type="button" id="instructions-start" class="btn btn-primary">Devam et</button>
+          <p>
+            <span lang="tr">Seçiminizi yaptıktan sonra kararınıza olan güveninizi 1–5 arası bir ölçekte
+              derecelendirmeniz istenecektir.</span>
+            <span class="lang-secondary" lang="en">After making your choice, you will rate your confidence on a scale
+              of 1–5.</span>
+          </p>
+          <p>
+            <strong lang="tr">Doğru ya da yanlış cevap yoktur.</strong>
+            <span class="lang-secondary" lang="en"><strong>There are no right or wrong answers.</strong></span>
+            <span lang="tr">Bizim için önemli olan, spontane algınızdır.</span>
+            <span class="lang-secondary" lang="en">We are interested in your spontaneous perception.</span>
+          </p>
+          <button type="button" id="instructions-start" class="btn btn-primary btn-bilingual">
+            <span lang="tr">Devam et</span>
+            <span class="lang-secondary" lang="en">Continue</span>
+          </button>
         </div>
       </div>
     </section>
@@ -87,27 +178,45 @@
     <!-- Trial Screen -->
     <section id="trial-screen" class="screen">
       <header class="study-header compact">
-        <span id="progress-text">Deneme 1 / 20</span>
+        <span id="progress-text" class="progress-bilingual"><span lang="tr" id="progress-tr">Deneme 1 / 20</span><span class="lang-secondary" lang="en" id="progress-en">Trial 1 of 20</span></span>
       </header>
       <div class="content-card trial-card">
-        <p id="trial-question" class="trial-question"></p>
+        <p id="trial-question" class="trial-question" role="heading" aria-level="2">
+          <span lang="tr" id="trial-q-tr"></span>
+          <span class="lang-secondary" lang="en" id="trial-q-en"></span>
+        </p>
         <div class="gif-pair">
           <div class="gif-option" data-side="left">
-            <img id="gif-left" src="" alt="Kişi A">
-            <span class="option-label">Kişi A</span>
+            <img id="gif-left" src="" alt="Kişi A / Person A">
+            <span class="option-label">
+              <span lang="tr">Kişi A</span>
+              <span class="lang-secondary" lang="en">Person A</span>
+            </span>
           </div>
           <div class="gif-option" data-side="right">
-            <img id="gif-right" src="" alt="Kişi B">
-            <span class="option-label">Kişi B</span>
+            <img id="gif-right" src="" alt="Kişi B / Person B">
+            <span class="option-label">
+              <span lang="tr">Kişi B</span>
+              <span class="lang-secondary" lang="en">Person B</span>
+            </span>
           </div>
         </div>
         <div class="trial-actions">
-          <button type="button" id="btn-left" class="btn btn-choice">Kişi A’yı seç</button>
-          <button type="button" id="btn-right" class="btn btn-choice">Kişi B’yi seç</button>
+          <button type="button" id="btn-left" class="btn btn-choice btn-bilingual">
+            <span lang="tr">Kişi A’yı seç</span>
+            <span class="lang-secondary" lang="en">Select Person A</span>
+          </button>
+          <button type="button" id="btn-right" class="btn btn-choice btn-bilingual">
+            <span lang="tr">Kişi B’yi seç</span>
+            <span class="lang-secondary" lang="en">Select Person B</span>
+          </button>
         </div>
         <div id="confidence-section" class="confidence-section" hidden>
-          <p class="confidence-prompt">Seçiminize ne kadar güveniyorsunuz? (1 = hiç güvenmiyorum, 5 = çok
-            güveniyorum)</p>
+          <p class="confidence-prompt">
+            <span lang="tr">Seçiminize ne kadar güveniyorsunuz? (1 = hiç güvenmiyorum, 5 = çok güveniyorum)</span>
+            <span class="lang-secondary" lang="en">How confident are you in your choice? (1 = not at all confident,
+              5 = very confident)</span>
+          </p>
           <div class="confidence-buttons">
             <button type="button" class="btn btn-confidence" data-confidence="1">1</button>
             <button type="button" class="btn btn-confidence" data-confidence="2">2</button>
@@ -122,12 +231,21 @@
     <!-- Completion Screen -->
     <section id="completion-screen" class="screen">
       <header class="study-header">
-        <h1>Teşekkürler</h1>
+        <h1 class="bilingual-heading">
+          <span lang="tr">Teşekkürler</span>
+          <span class="lang-secondary" lang="en">Thank You</span>
+        </h1>
       </header>
       <div class="content-card">
-        <p>Çalışmayı tamamladınız. Katılımınız için teşekkür ederiz.</p>
-        <p>Yanıtlarınız kaydedilmiştir. Bu pencereyi kapatabilirsiniz.</p>
-        <p id="completion-id" class="completion-id"></p>
+        <p>
+          <span lang="tr">Çalışmayı tamamladınız. Katılımınız için teşekkür ederiz.</span>
+          <span class="lang-secondary" lang="en">You have completed the study. Thank you for your participation.</span>
+        </p>
+        <p>
+          <span lang="tr">Yanıtlarınız kaydedilmiştir. Bu pencereyi kapatabilirsiniz.</span>
+          <span class="lang-secondary" lang="en">Your responses have been recorded. You may close this window.</span>
+        </p>
+        <p id="completion-id" class="completion-id bilingual-stack"></p>
       </div>
     </section>
   </div>
